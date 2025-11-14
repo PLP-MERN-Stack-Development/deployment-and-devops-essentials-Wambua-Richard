@@ -9,6 +9,8 @@ import PostList from "./components/PostList"; // ✅ Added
 import PostDetails from "./components/PostDetails"; // ✅ Added
 import PostForm from "./components/PostForm"; // ✅ Added
 import { fetchPosts } from "./lib/api";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -32,6 +34,17 @@ function App() {
 
   if (loading) return <p className="text-center mt-10">Loading posts...</p>;
   if (error) return <p className="text-center text-red-500 mt-10">Error: {error}</p>;
+
+  return (
+    <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </header>
+  );
 
   return (
     <Router>

@@ -3,7 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
-import chatHandler from "./socket/socketHandler.js"; // ✅ FIXED IMPORT
+import chatHandler from "./socket/socketHandler.js";
 
 import {
   addMessage,
@@ -12,6 +12,24 @@ import {
   markAsRead,
   getUnreadCount,
 } from "./utils/messageStore.js";
+
+import { clerkMiddleware } from "@clerk/express";
+import { requireAuth } from "@clerk/express";
+
+app.use(clerkMiddleware());
+app.use("/api/posts", requireAuth(), postsRouter);
+app.post("/api/posts", requireAuth(), async (req, res) => {
+  const userId = req.auth.userId; // logged-in user
+  res.json({ message: "Authorized", user: userId });
+});
+app.get("/api/profile", requireAuth(), (req, res) => {
+  res.json({
+    userId: req.auth.userId,
+    sessionId: req.auth.sessionId,
+  });
+});
+
+
 
 const app = express();
 const server = http.createServer(app);
