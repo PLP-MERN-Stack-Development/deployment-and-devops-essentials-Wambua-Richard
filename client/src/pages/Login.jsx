@@ -1,41 +1,43 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
-  const [room, setRoom] = useState("general");
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username.trim()) return;
-    navigate(`/chat?username=${username}&room=${room}`);
+
+    // Mock login for now
+    console.log("Logging in:", email, password);
+
+    navigate("/");
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="p-6 bg-white rounded-lg shadow-lg space-y-4"
-      >
-        <h1 className="text-xl font-bold text-center">Join Chat</h1>
+    <div className="max-w-md mx-auto mt-10 bg-white p-6 shadow rounded">
+      <h2 className="text-2xl font-bold mb-4">Login</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          className="w-full border px-3 py-2 rounded"
+          type="email"
+          placeholder="Email"
+          className="w-full p-2 border rounded"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
+
         <input
-          value={room}
-          onChange={(e) => setRoom(e.target.value)}
-          placeholder="Room (e.g. general)"
-          className="w-full border px-3 py-2 rounded"
+          type="password"
+          placeholder="Password"
+          className="w-full p-2 border rounded"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded"
-        >
-          Join
+
+        <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+          Login
         </button>
       </form>
     </div>

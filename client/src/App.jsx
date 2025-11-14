@@ -2,12 +2,12 @@
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import PostList from "./components/PostList";
-import PostDetails from "./components/PostDetails";
-import PostForm from "./components/PostForm";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
 import Header from "./components/Header";
+import Login from "./pages/Login";
+import Register from "./pages/Register"; // ✅ Added
+import PostList from "./components/PostList"; // ✅ Added
+import PostDetails from "./components/PostDetails"; // ✅ Added
+import PostForm from "./components/PostForm"; // ✅ Added
 import { fetchPosts } from "./lib/api";
 
 function App() {
