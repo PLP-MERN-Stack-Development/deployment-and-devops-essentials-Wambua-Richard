@@ -375,3 +375,9 @@ Frontend: Lighthouse audits, Real User Monitoring (RUM) via Google Analytics, Se
 Backups & DB maintenance
 
 Enable automated backups in MongoDB Atlas; test restores periodically
+
+
+Deployment Links
+GitHub repo = https://github.com/PLP-MERN-Stack-Development/deployment-and-devops-essentials-Wambua-Richard.git
+render = https://deployment-and-devops-essentials-wambua.onrender.com
+vercel = https://mernapp-sand.vercel.app/
